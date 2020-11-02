@@ -14,8 +14,8 @@ class FollowingsTest < ApplicationSystemTestCase
     visit followings_url
     click_on "New Following"
 
+    fill_in "Followedid", with: @following.followedId
     fill_in "Followerid", with: @following.followerId
-    fill_in "Followingid", with: @following.followingId
     click_on "Create Following"
 
     assert_text "Following was successfully created"
@@ -26,8 +26,8 @@ class FollowingsTest < ApplicationSystemTestCase
     visit followings_url
     click_on "Edit", match: :first
 
+    fill_in "Followedid", with: @following.followedId
     fill_in "Followerid", with: @following.followerId
-    fill_in "Followingid", with: @following.followingId
     click_on "Update Following"
 
     assert_text "Following was successfully updated"

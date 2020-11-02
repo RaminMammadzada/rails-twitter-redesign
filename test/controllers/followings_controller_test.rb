@@ -17,7 +17,7 @@ class FollowingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create following" do
     assert_difference('Following.count') do
-      post followings_url, params: { following: { followerId: @following.followerId, followingId: @following.followingId } }
+      post followings_url, params: { following: { followedId: @following.followedId, followerId: @following.followerId } }
     end
 
     assert_redirected_to following_url(Following.last)
@@ -34,7 +34,7 @@ class FollowingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update following" do
-    patch following_url(@following), params: { following: { followerId: @following.followerId, followingId: @following.followingId } }
+    patch following_url(@following), params: { following: { followedId: @following.followedId, followerId: @following.followerId } }
     assert_redirected_to following_url(@following)
   end
 

@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Followerid</th>
-      <th>Followingid</th>
+      <th>Followedid</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
     <% @followings.each do |following| %>
       <tr>
         <td><%= following.followerId %></td>
-        <td><%= following.followingId %></td>
+        <td><%= following.followedId %></td>
         <td><%= link_to 'Show', following %></td>
         <td><%= link_to 'Edit', edit_following_path(following) %></td>
         <td><%= link_to 'Destroy', following, method: :delete, data: { confirm: 'Are you sure?' } %></td>
