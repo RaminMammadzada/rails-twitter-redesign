@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-end">
+
+  <% if current_user.nil? %>
+    <h3 class="mx-3"><%= link_to "Login", login_url %></h3>
+    <h3 class="mx-3"><%= link_to "Signup", signup_url %></h3>
+  <% else %>
+    <h3 class="mx-3"><%= current_user.username %></h3>
+    <h3 class="mx-3"><%= link_to "Logout", logout_url %></h3>
+  <% end %>
+</div>

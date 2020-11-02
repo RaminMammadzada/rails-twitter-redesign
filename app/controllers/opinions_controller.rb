@@ -4,6 +4,7 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
+    login_required
     @opinions = Opinion.all
   end
 

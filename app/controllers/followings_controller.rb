@@ -4,6 +4,7 @@ class FollowingsController < ApplicationController
   # GET /followings
   # GET /followings.json
   def index
+    login_required
     @followings = Following.all
   end
 
