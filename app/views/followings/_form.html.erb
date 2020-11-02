@@ -1,0 +1,27 @@
+<%= form_with(model: following, local: true) do |form| %>
+  <% if following.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(following.errors.count, "error") %> prohibited this following from being saved:</h2>
+
+      <ul>
+        <% following.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :followerId %>
+    <%= form.number_field :followerId %>
+  </div>
+
+  <div class="field">
+    <%= form.label :followingId %>
+    <%= form.number_field :followingId %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
