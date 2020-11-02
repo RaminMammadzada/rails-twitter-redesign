@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Opinions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Authorid</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @opinions.each do |opinion| %>
+      <tr>
+        <td><%= opinion.authorId %></td>
+        <td><%= opinion.text %></td>
+        <td><%= link_to 'Show', opinion %></td>
+        <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
+        <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Opinion', new_opinion_path %>

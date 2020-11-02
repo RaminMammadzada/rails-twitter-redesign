@@ -1,0 +1,2 @@
+class Opinion < ApplicationRecord
+end
