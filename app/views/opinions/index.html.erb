@@ -5,6 +5,7 @@
 
     <%= render 'form', opinion: @opinion %>
 
+
     <div class="container">
 <!--      <p id="notice"><%#= notice %></p>-->
       <h1>Opinions</h1>
@@ -17,7 +18,41 @@
           <th colspan="3"></th>
         </tr>
         </thead>
-        <tbody>
+
+        <div class="d-flex flex-column">
+          <% @timeline_opinions.each do |opinion| %>
+            <div class="container bg-light">
+              <div class="d-flex flex-row">
+                <div class="mr-3 flex-shrink-1">
+                  <%= image_tag opinion.user.photo.url(:thumb) %>
+                </div>
+                <div class="d-flex flex-column ml-3 w-100">
+                  <div class="d-flex flex-row justify-content-between">
+                    <h5><%= opinion.user.fullname %></h5>
+                    <p><%= time_ago_in_words(opinion.created_at) + " ago" %></p>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <p><%= opinion.text %></p>
+                    <div class="d-flex justify-content-end flex-row">
+                      <p class="mr-2"><%= link_to 'Edit', edit_opinion_path(opinion) %></p>
+                      <p><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <tr>
+              <td><%= opinion.authorId %></td>
+              <td><%= opinion.text %></td>
+              <td><%= link_to 'Show', opinion %></td>
+              <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
+              <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </div>
         <% @timeline_opinions.each do |opinion| %>
           <tr>
             <td><%= opinion.authorId %></td>
