@@ -17,6 +17,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 //= require jquery
+//= require popper
 //= require tether
 //= require bootstrap
 

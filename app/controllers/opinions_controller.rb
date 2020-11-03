@@ -5,7 +5,11 @@ class OpinionsController < ApplicationController
   # GET /opinions.json
   def index
     login_required
-    @opinions = Opinion.all
+    # @opinions = Opinion.all
+
+    @opinion = Opinion.new()
+    # @opinion.authorId = get_current_user.id
+    timeline_opinions
   end
 
   # GET /opinions/1
@@ -26,10 +30,11 @@ class OpinionsController < ApplicationController
   # POST /opinions.json
   def create
     @opinion = Opinion.new(opinion_params)
+    @opinion.authorId = get_current_user.id
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
+        format.html { redirect_to opinions_path, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -63,6 +68,10 @@ class OpinionsController < ApplicationController
   end
 
   private
+    def timeline_opinions
+      @timeline_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_opinion
       @opinion = Opinion.find(params[:id])

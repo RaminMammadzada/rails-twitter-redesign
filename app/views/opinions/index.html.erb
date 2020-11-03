@@ -1,35 +1,38 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
-  <h1>Opinions</h1>
-
-  <table>
-    <thead>
-    <tr>
-      <th>Authorid</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @opinions.each do |opinion| %>
-      <tr>
-        <td><%= opinion.authorId %></td>
-        <td><%= opinion.text %></td>
-        <td><%= link_to 'Show', opinion %></td>
-        <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
-        <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= link_to 'New Opinion', new_opinion_path %>
-
-</div>
-
-<div class="d-flex align-items-center text-secondary align-self-stretch">
+<div class="d-flex text-secondary">
   <div class="w-100 content">
-    content
+
+    <%= render 'opinions/navbar' %>
+
+    <%= render 'form', opinion: @opinion %>
+
+    <div class="container">
+<!--      <p id="notice"><%#= notice %></p>-->
+      <h1>Opinions</h1>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Authorid</th>
+          <th>Text</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @timeline_opinions.each do |opinion| %>
+          <tr>
+            <td><%= opinion.authorId %></td>
+            <td><%= opinion.text %></td>
+            <td><%= link_to 'Show', opinion %></td>
+            <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
+            <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+      <%= link_to 'New Opinion', new_opinion_path %>
+
+    </div>
   </div>
   <div class="flex-shrink-1 right_sidebar">
     RIGHT SIDEBAR
