@@ -1,0 +1,60 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap
+ *= require_self
+ */
+
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+/*body {*/
+/*    position: relative;*/
+/*}*/
+
+.all-info {
+    height: -webkit-calc(100vh);
+    height: -moz-calc(100vh);
+    height: calc(100vh);
+}
+
+.login_signup_form_wrapper {
+    width: 300px;           /* Set this to your convenience */
+    height: 200px;          /* Set this to your convenience */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 40px;     /* Half of height */
+    margin-left: -150px;     /* Half of width */
+}
+
+.top_navbar {
+    background: #51a6e7;
+    height: 80px;
+}
+
+.left_sidebar {
+    background: #223346;
+}
+
+.content {
+    background: #ffffff;
+}
+
+.right_sidebar {
+    background: #f5f6f8;
+}
