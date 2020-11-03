@@ -3,22 +3,14 @@
 
     <%= render 'opinions/navbar' %>
 
-    <%= render 'form', opinion: @opinion %>
-
-
     <div class="container">
 <!--      <p id="notice"><%#= notice %></p>-->
+
+      <div class="d-flex flex-column my-5">
+        <%= render 'form', opinion: @opinion %>
+      </div>
+
       <h1>Opinions</h1>
-
-      <table>
-        <thead>
-        <tr>
-          <th>Authorid</th>
-          <th>Text</th>
-          <th colspan="3"></th>
-        </tr>
-        </thead>
-
         <div class="d-flex flex-column">
           <% @timeline_opinions.each do |opinion| %>
             <div class="container bg-light">
@@ -42,35 +34,12 @@
               </div>
             </div>
 
-
-
-            <tr>
-              <td><%= opinion.authorId %></td>
-              <td><%= opinion.text %></td>
-              <td><%= link_to 'Show', opinion %></td>
-              <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
-              <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
           <% end %>
         </div>
-        <% @timeline_opinions.each do |opinion| %>
-          <tr>
-            <td><%= opinion.authorId %></td>
-            <td><%= opinion.text %></td>
-            <td><%= link_to 'Show', opinion %></td>
-            <td><%= link_to 'Edit', edit_opinion_path(opinion) %></td>
-            <td><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      <br>
-      <%= link_to 'New Opinion', new_opinion_path %>
-
     </div>
   </div>
   <div class="flex-shrink-1 right_sidebar">
-    RIGHT SIDEBAR
+    <%= render 'opinions/right_sidebar' %>
   </div>
 </div>
 

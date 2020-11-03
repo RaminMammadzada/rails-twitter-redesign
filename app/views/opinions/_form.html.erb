@@ -1,27 +1,25 @@
-<%= form_with(model: opinion, local: true) do |form| %>
-  <% if opinion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
+<div class="d-flex w-100">
+  <%= form_with(model: opinion, local: true , class: "w-100") do |form| %>
+    <% if opinion.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
 
-      <ul>
-        <% opinion.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% opinion.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!--  <div class="field">-->
+    <%#= form.label :authorId %>
+    <%#= form.number_field :authorId %>
+    <!--  </div>-->
+
+    <div class="field">
+      <%= form.text_field :text, :class => "form-control write_tweet", :placeholder => "TWEET SOMETHING" %>
     </div>
   <% end %>
 
-<!--  <div class="field">-->
-    <%#= form.label :authorId %>
-    <%#= form.number_field :authorId %>
-<!--  </div>-->
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
