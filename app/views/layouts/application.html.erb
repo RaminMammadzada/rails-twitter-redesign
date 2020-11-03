@@ -20,18 +20,14 @@
           <%= render 'layouts/top_navbar' %>
          </div>
          <div class="d-flex align-items-center text-secondary align-self-stretch">
-           <div class="w-100 content">
-             content
-           </div>
-           <div class="flex-shrink-1 right_sidebar">
-             RIGHT SIDEBAR
-           </div>
+           <%= yield %>
          </div>
        </div>
      </div>
-     <% end %>
-     <div>
+     <% else %>
+     <div class="d-flex align-items-center text-secondary align-self-stretch">
        <%= yield %>
      </div>
+     <% end %>
   </body>
 </html>

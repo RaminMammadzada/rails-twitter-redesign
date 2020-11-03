@@ -61,3 +61,4 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
 end
 
+gem "paperclip", "~> 6.0.0"

@@ -1,26 +1,26 @@
 <div class="d-flex align-items-center">
-  <img class="h-25 w-25 m-3" src="https://picsum.photos/id/1/200/300" alt="">
-  <h3 class="mx-3"><%= current_user.username %></h3>
-  <h3 class="mx-3"><%= link_to "Logout", logout_url %></h3>
+  <%= image_tag current_user.photo.url(:thumb) %>
+  <h3 class="mx-3"><%= current_user.fullname %></h3>
 </div>
 <div class="d-flex m-3">
   <div class="d-flex flex-column mr-3">
-    <h4>1234</h4>
-    <h3>following</h3>
+    <h4><%= current_user.followeds.size %></h4>
+    <h3>followed</h3>
   </div>
   <div class="d-flex flex-column ml-3">
-    <h4>1234</h4>
+    <h4><%= current_user.followers.size %></h4>
     <h3>followers</h3>
   </div>
 </div>
 <ul>
-  <li>First</li>
-  <li>First</li>
-  <li>First</li>
-  <li>First</li>
-  <li>First</li>
+  <li><h3 class="mx-3"><%= link_to "Home", opinions_path %></h3></li>
+  <li><h3>First</h3></li>
+  <li><h3>First</h3></li>
+  <li><h3>First</h3></li>
+  <li><h3>First</h3></li>
 </ul>
 
+<h3 class="mx-3"><%= link_to "Logout", logout_url %></h3>
 
 <!--<div class="d-flex justify-content-end">-->
 
