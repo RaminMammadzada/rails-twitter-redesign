@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_172917) do
+ActiveRecord::Schema.define(version: 2020_11_05_075604) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "followerId"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 2020_11_03_172917) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string "cover_image_file_name"
+    t.string "cover_image_content_type"
+    t.integer "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
   end
 
 end

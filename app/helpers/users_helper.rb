@@ -1,22 +1,8 @@
 module UsersHelper
   def gel_all_unfollowed_users
-    all_users = User.all.where.not(id: current_user.id)
+    all_users = User.order(created_at: :desc).all.where.not(id: current_user.id)
     followed_users = Following.all.where(followerId: current_user.id)
     all_users - current_user.followeds
-
-      # unfollowed_users = all_users
-    # all_users.each do |user|
-    #   current_user.followeds.each do |followed_user|
-    #     if user.id == followed_user.id
-    #       unfollowed_users.pop(user)
-    #     end
-    #   end
-    # end
-    #
-    # p "HERE"
-    # p unfollowed_users
-    # p "HERE"
-    # unfollowed_users
   end
 
   def first_follower(user)
