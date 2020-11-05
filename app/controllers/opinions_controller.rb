@@ -68,16 +68,31 @@ class OpinionsController < ApplicationController
   def update_vote
     current_opinion_id = params[:opinion]
     current_voter_id = params[:voter]
+    vote_direction = params[:vote_direction]
+    route = params[:route]
     p "DEBUG3:#{current_opinion_id}"
     p "DEBUG4:#{current_voter_id}"
     current_opinion = Opinion.find_by(id: current_opinion_id)
     current_voter = User.find_by(id: current_voter_id)
     p "DEBUG5:#{current_opinion.votes}"
     p "DEBUG6:#{current_voter.votes}"
-    current_opinion.votes.create(voter_id: current_voter.id)
+    p "DEBUG7:#{params}"
+
+    if vote_direction == "up"
+      current_opinion.votes.create(voter_id: current_voter.id)
+    elsif vote_direction == "down"
+      current_opinion.votes.find_by(voter_id: current_voter.id).destroy
+    end
+
+
     respond_to do |format|
-      format.html { redirect_to opinions_url, notice: 'The vote is updated' }
-      format.json { head :no_content }
+      if route == "opinions"
+        format.html { redirect_to opinions_url, notice: 'The vote is updated' }
+        format.json { head :no_content }
+      elsif route == "user_profile"
+        format.html { redirect_to user_path(current_opinion.user.id), notice: 'The vote is updated' }
+        format.json { head :no_content }
+      end
     end
   end
 
