@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_opinions, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -66,7 +67,21 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      # set_user_opinions(@user)
+      # p "DEBUG22:#{@user}"
+      # @user
     end
+
+  def set_user_opinions
+    # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
+    @timeline_opinions = @user.opinions
+    p "DEBUG2:#{@timeline_opinions}"
+    @timeline_opinions.each do |opinion|
+      p "D:#{opinion.text}"
+    end
+    @timeline_opinions
+  end
+
 
     # Only allow a list of trusted parameters through.
     def user_params

@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="d-flex text-secondary">
+  <div class="w-100 content">
+    <%= render 'opinions/cover_image' %>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+    <%= render 'opinions/navbar' %>
 
-<p>
-  <strong>Fullname:</strong>
-  <%= @user.fullname %>
-</p>
+    <div class="container">
+      <!--      <p id="notice"><%#= notice %></p>-->
 
-<p>
-  <strong>Photo:</strong>
-  <%= @user.photo %>
-</p>
+      <div class="d-flex flex-column my-5">
+        <%= render 'opinions/form', opinion: @opinion %>
+      </div>
 
-<p>
-  <strong>Coverimage:</strong>
-  <%= @user.coverImage %>
-</p>
+      <div class="d-flex flex-column">
+        <%= render 'opinions/opinions_list', timeline_opinions: @timeline_opinions %>
+      </div>
+    </div>
+  </div>
+  <div class="flex-shrink-1 right_sidebar">
+    <%= render 'users/right_sidebar', { timeline_opinions: @timeline_opinions, user: @user } %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

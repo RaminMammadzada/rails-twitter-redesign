@@ -1,8 +1,8 @@
 module UsersHelper
-  def gel_all_unfollowed_users
-    all_users = User.order(created_at: :desc).all.where.not(id: current_user.id)
-    followed_users = Following.all.where(followerId: current_user.id)
-    all_users - current_user.followeds
+  def gel_all_unfollowed_users(user = current_user)
+    all_users = User.order(created_at: :desc).all.where.not(id: user.id)
+    followed_users = Following.all.where(followerId: user.id)
+    all_users - user.followeds
   end
 
   def first_follower(user)
@@ -11,11 +11,10 @@ module UsersHelper
   end
 
   def follow_button(user)
-    # return if user.id == current_user.id
-
+    return if user.id == current_user.id
     if Following.all.where(followerId: current_user.id, followedId: user.id).empty?
-      # icon = content_tag(:i, nil, class: 'fas fa-facebook')
-      icon = content_tag(:p, "follow")
+      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x')
+      # icon = content_tag(:p, "follow")
 
       capture do
         link_to icon, followings_path(
@@ -30,8 +29,8 @@ module UsersHelper
                 id: 'follow-button'
       end
     else
-      # icon = content_tag(:i, nil, class: 'fas fa-twitter')
-      icon = content_tag(:p, "unfollow")
+      # icon = content_tag(:p, "unfollow")
+      icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x')
       capture do
         link_to icon, following_path(
             id: user.id,

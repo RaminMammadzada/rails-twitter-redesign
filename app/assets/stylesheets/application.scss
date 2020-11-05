@@ -47,7 +47,12 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     height: 80px;
 }
 
-.navbar_in_opinions {
+.top_border {
+  border-top-style: solid;
+  border-top-color: #d5d6d8;
+}
+
+.bottom_border {
   border-bottom-style: solid;
   border-bottom-color: #d5d6d8;
 }
@@ -60,10 +65,15 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     background: #ffffff;
 }
 
+.left_border {
+  border-left-style: solid;
+  border-left-color: #d5d6d8;
+}
+
 .right_sidebar {
   border-left-style: solid;
   border-left-color: #d5d6d8;
-    background: #f5f6f8;
+  background: #f5f6f8;
 }
 
 .write_tweet {
