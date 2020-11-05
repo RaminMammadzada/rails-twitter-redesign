@@ -5,8 +5,12 @@ module UsersHelper
     all_users - user.followeds
   end
 
-  def gel_all_followers(user = current_user)
+  def get_all_followers(user = current_user)
     user.followers
+  end
+
+  def get_all_followed_users(user = current_user)
+    user.followeds
   end
 
   def first_follower(user)

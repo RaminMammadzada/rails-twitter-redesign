@@ -2,16 +2,18 @@
   <%= image_tag current_user.photo.url(:thumb) %>
   <h3 class="mx-3"><%= current_user.fullname %></h3>
 </div>
-<div class="d-flex m-3">
-  <div class="d-flex flex-column mr-3">
-    <h4><%= current_user.followeds.size %></h4>
-    <h3>followed</h3>
+
+<div class="d-flex my-3 justify-content-center align-items-center ">
+  <div class="d-flex flex-column justify-content-center align-items-center pl-2 pr-2 ">
+    <h4 ><%= link_to current_user.followeds.size, users_path( flag: "followed_users"), :class => "text-white"%> </h4>
+    <h5>followed</h5>
   </div>
-  <div class="d-flex flex-column ml-3">
-    <h4><%= current_user.followers.size %></h4>
-    <h3>followers</h3>
+  <div class="d-flex flex-column justify-content-center align-items-center pl-2 pr-2 ">
+    <h4 ><%= link_to current_user.followers.size, users_path( flag: "followers"), :class => "text-white"%> </h4>
+    <h5>followers</h5>
   </div>
 </div>
+
 <ul>
   <li><h3 class="mx-3"><%= link_to "Home", opinions_path %></h3></li>
   <li><h3><%= link_to "Profile", user_path(current_user) %></h3></li>

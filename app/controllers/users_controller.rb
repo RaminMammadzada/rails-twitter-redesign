@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   def index
     login_required
     @users = User.all
+    if params[:flag] == "followers"
+      @all_spesific_users = get_current_user.followers
+    elsif params[:flag] == "followed_users"
+      @all_spesific_users = get_current_user.followeds
+    end
   end
 
   # GET /users/1
