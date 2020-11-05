@@ -1,15 +1,11 @@
 <div class="d-flex text-secondary">
   <div class="w-100 content">
-    <%= render 'opinions/cover_image' %>
+    <%= render 'users/cover_image' %>
 
     <%= render 'opinions/navbar' %>
 
-    <div class="container">
+    <div class="container pt-3">
       <!--      <p id="notice"><%#= notice %></p>-->
-
-      <div class="d-flex flex-column my-5">
-        <%= render 'opinions/form', opinion: @opinion %>
-      </div>
 
       <div class="d-flex flex-column">
         <%= render 'opinions/opinions_list', timeline_opinions: @timeline_opinions %>

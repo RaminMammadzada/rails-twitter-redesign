@@ -5,7 +5,6 @@ class OpinionsController < ApplicationController
   def index
     login_required
     # @opinions = Opinion.all
-
     @opinion = Opinion.new()
     # @opinion.authorId = get_current_user.id
     timeline_opinions

@@ -5,15 +5,24 @@ module UsersHelper
     all_users - user.followeds
   end
 
+  def gel_all_followers(user = current_user)
+    user.followers
+  end
+
   def first_follower(user)
     first_follower = user.followers.first
     first_follower.nil? ? nil : first_follower.fullname
   end
 
   def follow_button(user)
-    return if user.id == current_user.id
+    if user.id == current_user.id
+      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x mr-4 hide-icon')
+      return capture do
+        icon
+      end
+    end
     if Following.all.where(followerId: current_user.id, followedId: user.id).empty?
-      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x')
+      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x mr-4')
       # icon = content_tag(:p, "follow")
 
       capture do
@@ -30,7 +39,7 @@ module UsersHelper
       end
     else
       # icon = content_tag(:p, "unfollow")
-      icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x')
+      icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x mr-4')
       capture do
         link_to icon, following_path(
             id: user.id,

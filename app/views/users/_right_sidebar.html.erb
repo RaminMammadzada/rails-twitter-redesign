@@ -9,6 +9,7 @@
         <i class="fas fa-cog fa-2x ml-4"></i>
       </div>
       <h3 class="mx-3"><%= @user.fullname %></h3>
+      <p class="mx-3">@<%= @user.username %></p>
     </div>
 
     <div class="d-flex my-3 bottom_border top_border">
@@ -31,7 +32,7 @@
     </div>
 
     <div class="d-flex flex-column">
-      <% gel_all_unfollowed_users.each do |user| %>
+      <% gel_all_followers(@user).each do |user| %>
         <div class=" bg-light my-2">
           <div class="d-flex flex-row align-items-center">
             <div class="pr-2 flex-shrink-1 ">
