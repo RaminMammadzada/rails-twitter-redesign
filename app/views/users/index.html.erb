@@ -1,7 +1,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1 class="text-dark">Followed users</h1>
+  <h1 class="text-dark"><%= get_title(@flag) %></h1>
 
   <%= render 'users/user_list', users: @all_spesific_users %>
 

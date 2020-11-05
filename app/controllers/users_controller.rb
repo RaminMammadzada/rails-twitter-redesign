@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     elsif params[:flag] == "followed_users"
       @all_spesific_users = get_current_user.followeds
     end
+    @flag = params[:flag]
   end
 
   # GET /users/1

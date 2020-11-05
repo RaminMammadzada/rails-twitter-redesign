@@ -55,4 +55,12 @@ module UsersHelper
       end
     end
   end
+
+  def get_title(flag)
+    if flag == "followers"
+      return "Followers"
+    elsif flag == "followed_users"
+      return "Followed users"
+    end
+  end
 end
