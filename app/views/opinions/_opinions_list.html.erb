@@ -1,14 +1,14 @@
 <% @timeline_opinions.each do |opinion| %>
-  <div class="container bg-light my-2 d-flex flex-row">
-    <div class="pr-3">
-      <% if @user != current_user %>
+  <div class="container bg-light my-2 d-flex flex-row ">
+    <div class="pr-3 flex-shrink-1">
+      <% if current_user.id != opinion.user.id %>
         <% route = @user.nil? ? "opinions" : "user_profile" %>
         <h4 ><%= link_to '<i class="fas fa-arrow-up a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "up", route: route } ), :class => "text-dark"%> </h4>
         <h4 class="text-dark"><%= opinion.votes.count %> </h4>
         <h4 ><%= link_to '<i class="fas fa-arrow-down a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "down", route: route }), :class => "text-dark"%> </h4>
       <% end %>
     </div>
-    <div class="d-flex flex-row align-items-center ">
+    <div class="d-flex flex-row align-items-center w-100">
       <div class="mr-3 flex-shrink-1">
         <%= image_tag opinion.user.photo.url(:thumb) %>
       </div>
