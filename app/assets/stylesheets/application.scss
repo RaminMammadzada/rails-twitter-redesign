@@ -47,6 +47,11 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     height: 80px;
 }
 
+.navbar_in_opinions {
+  border-bottom-style: solid;
+  border-bottom-color: #d5d6d8;
+}
+
 .left_sidebar {
     background: #223346;
 }
@@ -56,10 +61,16 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 
 .right_sidebar {
+  border-left-style: solid;
+  border-left-color: #d5d6d8;
     background: #f5f6f8;
 }
 
 .write_tweet {
   margin: 0 auto;
   background: #fffd5d;
+}
+
+.fullname-in-right-sidebar{
+  width: 150px;
 }

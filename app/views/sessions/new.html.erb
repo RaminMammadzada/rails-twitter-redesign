@@ -7,16 +7,15 @@
     <h1>Login</h1>
     <%= form_tag sessions_path do |form| %>
       <div class="field">
-        <%= label_tag :username %>
-        <%= text_field_tag :username %>
+        <%= text_field_tag :username , "", :class => "form-control", :placeholder => "your username"%>
       </div>
 
-      <div class="row">
+      <div class="d-flex justify-content-between row">
         <div class="actions mx-3">
-          <%= submit_tag "login"%>
+          <%= submit_tag "login", :class => "btn btn-primary"%>
         </div>
         <div class="actions mx-3">
-          <button><%= link_to "Sign Up", signup_url %></button>
+          <%= link_to "Sign Up", signup_url, :class => "btn btn-primary text-light" %>
         </div>
       </div>
     <% end %>

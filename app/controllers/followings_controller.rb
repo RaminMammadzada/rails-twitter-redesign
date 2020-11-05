@@ -26,10 +26,11 @@ class FollowingsController < ApplicationController
   # POST /followings.json
   def create
     @following = Following.new(following_params)
-
+    p "DEBUG1:FOLLOWER ID:#{@following.followerId}"
+    p "DEBUG1:FOLLOWED ID:#{@following.followedId}"
     respond_to do |format|
       if @following.save
-        format.html { redirect_to @following, notice: 'Following was successfully created.' }
+        format.html { redirect_to opinions_path, notice: 'Following was successfully created.' }
         format.json { render :show, status: :created, location: @following }
       else
         format.html { render :new }
@@ -55,9 +56,9 @@ class FollowingsController < ApplicationController
   # DELETE /followings/1
   # DELETE /followings/1.json
   def destroy
-    @following.destroy
+    @following.destroy_all
     respond_to do |format|
-      format.html { redirect_to followings_url, notice: 'Following was successfully destroyed.' }
+      format.html { redirect_to opinions_path, notice: 'Following was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,7 +66,7 @@ class FollowingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_following
-      @following = Following.find(params[:id])
+      @following = Following.where(followerId: get_current_user.id, followedId: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
