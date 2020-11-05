@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_075604) do
+ActiveRecord::Schema.define(version: 2020_11_05_175512) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "followerId"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_11_05_075604) do
     t.string "cover_image_content_type"
     t.integer "cover_image_file_size"
     t.datetime "cover_image_updated_at"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "voter_id"
+    t.integer "current_opinion_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

@@ -13,4 +13,6 @@ class User < ApplicationRecord
 
   has_attached_file :cover_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :cover_image, content_type: /\Aimage\/.*\z/
+
+  has_many :votes, class_name: 'Vote', foreign_key: :voter_id, dependent: :destroy
 end

@@ -1,24 +1,28 @@
 <% @timeline_opinions.each do |opinion| %>
-    <div class="container bg-light my-2">
-      <div class="d-flex flex-row align-items-center ">
-        <div class="mr-3 flex-shrink-1">
-          <%= image_tag opinion.user.photo.url(:thumb) %>
+  <div class="container bg-light my-2 d-flex flex-column">
+    <div class="d-flex flex-row align-items-center ">
+      <div class="mr-3 flex-shrink-1">
+        <%= image_tag opinion.user.photo.url(:thumb) %>
+      </div>
+      <div class="d-flex flex-column ml-3 w-100">
+        <div class="d-flex flex-row justify-content-between">
+          <h5><%= link_to opinion.user.fullname, user_path(opinion.user.id), :class => "text-dark"%> </h5>
+          <p><%= time_ago_in_words(opinion.created_at) + " ago" %></p>
         </div>
-        <div class="d-flex flex-column ml-3 w-100">
-          <div class="d-flex flex-row justify-content-between">
-            <h5><%= link_to opinion.user.fullname, user_path(opinion.user.id), :class => "text-dark"%> </h5>
-            <p><%= time_ago_in_words(opinion.created_at) + " ago" %></p>
-          </div>
-          <div class="d-flex flex-column">
-            <p><%= opinion.text %></p>
-            <% if current_user.id == opinion.user.id %>
-              <div class="d-flex justify-content-end flex-row">
-                <p class="mr-2"><%= link_to 'Edit', edit_opinion_path(opinion) %></p>
-                <p><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-              </div>
-            <% end %>
-          </div>
+        <div class="d-flex flex-column">
+          <p><%= opinion.text %></p>
+          <% if current_user.id == opinion.user.id %>
+            <div class="d-flex justify-content-end flex-row">
+              <p class="mr-2"><%= link_to 'Edit', edit_opinion_path(opinion) %></p>
+              <p><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
+    <div>
+      <%=  %>
+      <h4 ><%= link_to opinion.votes.count, vote_path({opinion: opinion, voter: current_user }), :class => "text-dark"%> </h4>
+    </div>
+  </div>
 <% end %>

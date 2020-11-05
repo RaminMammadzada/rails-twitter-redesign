@@ -65,6 +65,22 @@ class OpinionsController < ApplicationController
     end
   end
 
+  def update_vote
+    current_opinion_id = params[:opinion]
+    current_voter_id = params[:voter]
+    p "DEBUG3:#{current_opinion_id}"
+    p "DEBUG4:#{current_voter_id}"
+    current_opinion = Opinion.find_by(id: current_opinion_id)
+    current_voter = User.find_by(id: current_voter_id)
+    p "DEBUG5:#{current_opinion.votes}"
+    p "DEBUG6:#{current_voter.votes}"
+    current_opinion.votes.create(voter_id: current_voter.id)
+    respond_to do |format|
+      format.html { redirect_to opinions_url, notice: 'The vote is updated' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def timeline_opinions
       @timeline_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
@@ -79,4 +95,5 @@ class OpinionsController < ApplicationController
     def opinion_params
       params.require(:opinion).permit(:authorId, :text)
     end
+
 end
