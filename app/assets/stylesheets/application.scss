@@ -37,7 +37,6 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   width: 50%;
   border: 3px solid #4e7bcf;
   padding: 10px;
-
 }
 
 .top_navbar {
@@ -85,4 +84,17 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 .hide-icon {
   opacity:0;
+}
+
+li {
+  display:inline;
+  font-size:25px;
+}
+
+.text-black-30 {
+  color: #cacbcd;
+}
+
+.vote_container {
+  width: 40px;
 }

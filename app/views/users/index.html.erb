@@ -1,10 +1,12 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div class="">
 
-  <h1 class="text-dark"><%= get_title(@flag) %></h1>
+  <%= render 'opinions/navbar' %>
+  <div class="container">
+    <h1 class="text-dark"><%= get_title(@flag) %></h1>
 
-  <%= render 'users/user_list', users: @all_spesific_users %>
+    <%= render 'users/user_list', users: @all_spesific_users %>
 
-  <%#= render 'users/user_list', users: get_all_followers %>
-  <%#= render 'users/user_list', users: get_all_followed_users %>
+    <%#= render 'users/user_list', users: get_all_followers %>
+    <%#= render 'users/user_list', users: get_all_followed_users %>
+  </div>
 </div>
