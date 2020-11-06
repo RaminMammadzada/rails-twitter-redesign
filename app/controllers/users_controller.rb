@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_user_opinions, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -8,9 +8,9 @@ class UsersController < ApplicationController
     login_required
     @users = User.all
     if params[:flag] == "followers"
-      @all_spesific_users = get_current_user.followers
+      @all_spesific_users = @user.followers
     elsif params[:flag] == "followed_users"
-      @all_spesific_users = get_current_user.followeds
+      @all_spesific_users = @user.followeds
     end
     @flag = params[:flag]
   end

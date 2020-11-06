@@ -5,18 +5,18 @@
 
 <div class="d-flex my-3 justify-content-center align-items-center ">
   <div class="d-flex flex-column justify-content-center align-items-center pl-1 pr-4 ">
-    <h1 ><%= link_to current_user.followeds.size, users_path( flag: "followed_users"), :class => "text-white"%> </h1>
+    <h1 ><%= link_to current_user.followeds.size, users_path(id: current_user.id, flag: "followed_users"), :class => "text-white"%> </h1>
     <p class="text-muted">followed</p>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center pl-4 pr-1 ">
-    <h1 ><%= link_to current_user.followers.size, users_path( flag: "followers"), :class => "text-white"%> </h1>
+    <h1 ><%= link_to current_user.followers.size, users_path(id: current_user.id, flag: "followers"), :class => "text-white"%> </h1>
     <p class="text-muted">followers</p>
   </div>
 </div>
 
 <ul class="text-muted d-flex flex-column">
     <li class="my-2"><%= link_to '<i class="fa fa-user mr-3 text-muted"></i> Profile'.html_safe, user_path(current_user) %></li>
-    <li class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, user_path(current_user) %></li>
+    <li class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, opinions_path %></li>
     <li class="mt-5"><%= link_to "Logout", logout_url %></li>
 </ul>
 
