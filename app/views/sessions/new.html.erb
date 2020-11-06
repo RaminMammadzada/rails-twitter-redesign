@@ -1,10 +1,13 @@
 <div class="login_signup_form_wrapper">
   <div class="container">
-    <h1>Sessions#new</h1>
-    <p>Find me in app/views/sessions/new.html.erb</p>
+
+    <div class="d-flex flex-column align-items-center">
+      <i class="fab fa-twitter fa-2x ml-4 text-primary"></i>
+      <h1>Login</h1>
+    </div>
+
 
     <p id="alert"><%= alert %></p>
-    <h1>Login</h1>
     <%= form_tag sessions_path do |form| %>
       <div class="field">
         <%= text_field_tag :username , "", :class => "form-control", :placeholder => "your username"%>

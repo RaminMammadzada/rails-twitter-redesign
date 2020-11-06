@@ -1,9 +1,11 @@
 <div class="login_signup_form_wrapper">
   <div class="container">
-    <h1>New User</h1>
+    <div class="d-flex flex-column align-items-center">
+      <i class="fab fa-twitter fa-2x ml-4 text-primary"></i>
+      <h1>New User</h1>
+    </div>
 
     <%= render 'form', user: @user %>
-    <button><%= link_to "Log In", login_url %></button>
   </div>
 </div>
 

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'You are successfully logged in!'
     else
-      flash.now[:alert] = 'You username is not valid!'
+      flash.now[:alert] = 'You username is not valid or cannot be blank!'
       render 'new'
     end
   end

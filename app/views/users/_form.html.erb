@@ -21,10 +21,6 @@
     <%= form.text_field :fullname %>
   </div>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo %>
-  </div>
 
   <div class="field">
     <%= form.label :photo %>
@@ -36,7 +32,13 @@
     <%= form.file_field :cover_image %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions d-flex flex-row justify-content-between">
+    <%= form.submit :class => "btn btn-primary" %>
+    <div class="d-flex align-items-baseline">
+      <p class="mr-2">go back to </p>
+      <%= link_to "Log In", login_url, :class => "btn btn-primary text-white" %>
+    </div>
   </div>
+
+
 <% end %>
