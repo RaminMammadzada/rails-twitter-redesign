@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-light">
      <% if current_user %>
      <div class="d-flex text-light all-info">
        <div class="p-3 flex-shrink-1 left_sidebar">
@@ -19,13 +19,13 @@
          <div class="top_navbar d-flex flex-nowrap">
           <%= render 'layouts/top_navbar' %>
          </div>
-         <div>
+         <div class="bg-light">
            <%= yield %>
          </div>
        </div>
      </div>
      <% else %>
-     <div>
+     <div class="bg-light">
        <%= yield %>
      </div>
      <% end %>

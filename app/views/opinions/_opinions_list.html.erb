@@ -1,5 +1,5 @@
 <% @timeline_opinions.each do |opinion| %>
-  <div class="container bg-light my-2 d-flex flex-row ">
+  <div class="container bg-white my-2 d-flex flex-row ">
     <div class="vote_container flex-shrink-1 d-flex flex-column">
       <% route = @user.nil? ? "opinions" : "user_profile" %>
       <% if current_user.id != opinion.user.id %>
