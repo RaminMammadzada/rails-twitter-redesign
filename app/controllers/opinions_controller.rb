@@ -2,6 +2,7 @@ class OpinionsController < ApplicationController
   before_action :set_opinion, only: [:show, :edit, :update, :destroy]
   # GET /opinions
   # GET /opinions.json
+
   def index
     login_required
     # @opinions = Opinion.all
@@ -79,9 +80,9 @@ class OpinionsController < ApplicationController
     p "DEBUG7:#{params}"
 
     if vote_direction == "up"
-      current_opinion.votes.create(voter_id: current_voter.id)
+        current_opinion.votes.create(voter_id: current_voter.id, vote_type: "up")
     elsif vote_direction == "down"
-      current_opinion.votes.find_by(voter_id: current_voter.id).destroy
+        current_opinion.votes.create(voter_id: current_voter.id, vote_type: "down")
     end
 
 

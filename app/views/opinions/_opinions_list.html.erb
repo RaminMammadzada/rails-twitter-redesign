@@ -4,7 +4,7 @@
       <% route = @user.nil? ? "opinions" : "user_profile" %>
       <% if current_user.id != opinion.user.id %>
         <h4 ><%= link_to '<i class="fas fa-arrow-up a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "up", route: route } ), :class => "text-dark"%> </h4>
-        <h4 class="text-dark"><%= opinion.votes.count %></h4>
+        <h4 class="text-dark"><%= get_opinion_count(opinion) %></h4>
         <h4 ><%= link_to '<i class="fas fa-arrow-down a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "down", route: route }), :class => "text-dark"%> </h4>
       <% else %>
         <h4 ><i class="fas fa-arrow-up a-2x text-black-30"></i></h4>
