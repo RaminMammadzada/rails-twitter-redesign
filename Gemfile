@@ -67,3 +67,4 @@ end
 
 gem "paperclip", "~> 6.0.0"
 gem 'paperclip-cloudinary'
+gem 'bullet'
