@@ -5,7 +5,7 @@ class FollowingsController < ApplicationController
   # GET /followings.json
   def index
     login_required
-    @followings = Following.all
+    @followings = Following.all.includes(:id, :followerId, :followedId, :created_at)
   end
 
   # GET /followings/1
@@ -26,8 +26,6 @@ class FollowingsController < ApplicationController
   # POST /followings.json
   def create
     @following = Following.new(following_params)
-    p "DEBUG1:FOLLOWER ID:#{@following.followerId}"
-    p "DEBUG1:FOLLOWED ID:#{@following.followedId}"
     respond_to do |format|
       if @following.save
         format.html { redirect_to opinions_path, notice: 'Following was successfully created.' }
@@ -66,7 +64,7 @@ class FollowingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_following
-      @following = Following.where(followerId: get_current_user.id, followedId: params[:id])
+      @following = Following.where(followerId: get_current_user.id, followedId: params[:id]).includes(:id, :followerId, :followedId, :created_at)
     end
 
     # Only allow a list of trusted parameters through.
