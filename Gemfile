@@ -66,3 +66,4 @@ source 'https://rails-assets.org' do
 end
 
 gem "paperclip", "~> 6.0.0"
+gem 'paperclip-cloudinary'

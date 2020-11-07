@@ -5,7 +5,7 @@
       <div class="d-flex flex-row align-items-center">
         <%= follow_button(@user) %>
         <%= image_tag @user.photo.url(:thumb), :class => "rounded-circle" %>
-        <i class="fas fa-cog fa-2x ml-4"></i>
+        <%= settings_button(@user) %>
       </div>
       <h3 class="mx-3"><%= @user.fullname %></h3>
       <p class="mx-3">@<%= @user.username %></p>

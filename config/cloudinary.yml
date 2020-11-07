@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: remkidesign
+  api_key: '984522538686468'
+  api_secret: e-fyYNBm2uCWR0JiUZqG1rvphAo
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: remkidesign
+  api_key: '984522538686468'
+  api_secret: e-fyYNBm2uCWR0JiUZqG1rvphAo
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: remkidesign
+  api_key: '984522538686468'
+  api_secret: e-fyYNBm2uCWR0JiUZqG1rvphAo
+  enhance_image_tag: true
+  static_file_support: false

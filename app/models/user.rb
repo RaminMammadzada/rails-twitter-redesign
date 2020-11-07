@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :fullname, presence: true
-  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png", :storage => :cloudinary, :path => 'image/upload/v1/:id/:style/:filename'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :cover_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :cover_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png", :storage => :cloudinary, :path => 'image/upload/v1/:id/:style/:filename'
   validates_attachment_content_type :cover_image, content_type: /\Aimage\/.*\z/
 
   has_many :votes, class_name: 'Vote', foreign_key: :voter_id, dependent: :destroy

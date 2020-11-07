@@ -56,6 +56,20 @@ module UsersHelper
     end
   end
 
+  def settings_button(user)
+    if user.id == current_user.id
+      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x ml-4')
+      return capture do
+        link_to icon, edit_user_path(user)
+      end
+    else
+      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x ml-4 hide-icon')
+      return capture do
+        icon
+      end
+    end
+  end
+
   def get_title(flag)
     if flag == "followers"
       return "Followers"
