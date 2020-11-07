@@ -36,6 +36,8 @@ I followed a user journey to build the following **MVP version** of the app:
     4. List of people who follow this user.
 7. At the end extend the MVP app with one simple voting feature is created.
 
+8. Eager loading is implemented in the controllers to avoid ```n+1 queries``` problem. 
+
 
 ## Technical mandatory requirements of the project:
 1. The project is a desktop web app.
