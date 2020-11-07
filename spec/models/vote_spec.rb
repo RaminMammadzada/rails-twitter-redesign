@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Vote, type: :model do
-  let(:test_user) { User.create(username: 'ramin', full_name: 'Ramin Mammadzada') }
-  let(:test_opinion) { described_class.new(text: 'This is the text.', author_id: test_user.id) }
+  let(:test_user) { User.create(username: 'ramin', fullname: 'Ramin Mammadzada') }
+  let(:test_opinion) { Opinion.create(text: 'This is the text.', authorId: test_user.id) }
 
   let(:test_vote) { Vote.create(voter_id: test_user.id, current_opinion_id: test_opinion.id, vote_type: 'up') }
 
   describe 'validations' do
-    it 'should be valid, because vote field are all valid' do
+    it 'should be valid, because all fields of vote are valid' do
       expect(test_vote).to be_valid
     end
     it "should be valid, because the vote type is valid" do
@@ -15,7 +15,7 @@ RSpec.describe Vote, type: :model do
       expect(test_vote).to  be_valid
     end
     it "should be invalid, because the vote type is invalid" do
-      test_vote.follower_id = "invalid_example_vote_type"
+      test_vote.voter_id = "invalid_example_vote_type"
       expect(test_vote).to be_invalid
     end
   end
