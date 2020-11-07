@@ -1,12 +1,19 @@
-<div class="">
+<div class="d-flex text-secondary">
+  <div class="w-100 content">
+    <%= render 'users/cover_image', user: @user %>
 
-  <%= render 'opinions/navbar' %>
-  <div class="container">
-    <h1 class="text-dark"><%= get_title(@flag) %></h1>
+    <%= render 'users/navbar', user: @user %>
 
-    <%= render 'users/user_list', users: @all_spesific_users %>
+    <div class="container">
+      <h1 class="text-dark"><%= get_title(@flag) %></h1>
 
-    <%#= render 'users/user_list', users: get_all_followers %>
-    <%#= render 'users/user_list', users: get_all_followed_users %>
+      <%= render 'users/user_list', users: @all_spesific_users %>
+
+    </div>
+  </div>
+  <div class="flex-shrink-1 right_sidebar">
+    <%= render 'users/right_sidebar', { timeline_opinions: @timeline_opinions, user: @user } %>
   </div>
 </div>
+
+
