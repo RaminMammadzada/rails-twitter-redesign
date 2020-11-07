@@ -20,13 +20,13 @@ module UsersHelper
 
   def follow_button(user)
     if user.id == current_user.id
-      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x mr-4 hide-icon')
+      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x hide-icon')
       return capture do
         icon
       end
     end
     if Following.all.where(followerId: current_user.id, followedId: user.id).empty?
-      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x mr-4')
+      icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x')
       # icon = content_tag(:p, "follow")
 
       capture do
@@ -43,7 +43,7 @@ module UsersHelper
       end
     else
       # icon = content_tag(:p, "unfollow")
-      icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x mr-4')
+      icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x')
       capture do
         link_to icon, following_path(
             id: user.id,
@@ -58,12 +58,12 @@ module UsersHelper
 
   def settings_button(user)
     if user.id == current_user.id
-      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x ml-4')
+      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x')
       return capture do
         link_to icon, edit_user_path(user)
       end
     else
-      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x ml-4 hide-icon')
+      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x')
       return capture do
         icon
       end

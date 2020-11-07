@@ -98,3 +98,18 @@ li {
 .vote_container {
   width: 40px;
 }
+
+a:hover {
+  background: #a2a2a2;
+  border-radius: 3%;
+  padding: 2px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.right-sidebar-user-info {
+
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
