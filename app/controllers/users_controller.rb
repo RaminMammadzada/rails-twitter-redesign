@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     login_required
-    @users = User.all
+    @users = User.all.includes(:id, :username, :fullname, :photo, :cover_image, created_at)
     if params[:flag] == "followers"
       @all_spesific_users = @user.followers
     elsif params[:flag] == "followed_users"
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]).includes(:id, :authorId, :text, :created_at)
       # set_user_opinions(@user)
       # p "DEBUG22:#{@user}"
       # @user
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
   def set_user_opinions
     # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
-    @timeline_opinions = @user.opinions
+    @timeline_opinions = @user.opinions.includes(:id, :authorId, :text, :created_at)
     @timeline_opinions
   end
 
