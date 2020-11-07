@@ -81,10 +81,6 @@ class UsersController < ApplicationController
   def set_user_opinions
     # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
     @timeline_opinions = @user.opinions
-    p "DEBUG2:#{@timeline_opinions}"
-    @timeline_opinions.each do |opinion|
-      p "D:#{opinion.text}"
-    end
     @timeline_opinions
   end
 

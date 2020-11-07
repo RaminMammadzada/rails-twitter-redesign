@@ -71,13 +71,8 @@ class OpinionsController < ApplicationController
     current_voter_id = params[:voter]
     vote_direction = params[:vote_direction]
     route = params[:route]
-    p "DEBUG3:#{current_opinion_id}"
-    p "DEBUG4:#{current_voter_id}"
     current_opinion = Opinion.find_by(id: current_opinion_id)
     current_voter = User.find_by(id: current_voter_id)
-    p "DEBUG5:#{current_opinion.votes}"
-    p "DEBUG6:#{current_voter.votes}"
-    p "DEBUG7:#{params}"
 
     if vote_direction == "up"
         current_opinion.votes.create(voter_id: current_voter.id, vote_type: "up")
