@@ -47,7 +47,7 @@ class OpinionsController < ApplicationController
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to opinions_path, notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }

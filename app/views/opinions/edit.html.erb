@@ -1,6 +1,21 @@
-<h1>Editing Opinion</h1>
+<div class="d-flex text-secondary">
+  <div class="w-100 content">
+    <%= render 'opinions/navbar' %>
 
-<%= render 'form', opinion: @opinion %>
+    <div class="container bg-light">
 
-<%= link_to 'Show', @opinion %> |
-<%= link_to 'Back', opinions_path %>
+      <div class="d-flex flex-column py-5">
+        <h1>Editing Opinion</h1>
+
+        <%= render 'form', opinion: @opinion %>
+
+        <%= link_to 'Back', opinions_path %>
+      </div>
+
+    </div>
+  </div>
+  <div class="flex-shrink-1 right_sidebar">
+    <%= render 'opinions/right_sidebar' %>
+  </div>
+</div>
+
