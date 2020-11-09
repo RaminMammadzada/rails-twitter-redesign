@@ -5,7 +5,7 @@ class FollowingsController < ApplicationController
   # GET /followings.json
   def index
     login_required
-    @followings = Following.all.includes(:id, :followerId, :followedId, :created_at)
+    @followings = Following.all
   end
 
   # GET /followings/1
@@ -65,7 +65,6 @@ class FollowingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_following
       @following = Following.where(followerId: get_current_user.id, followedId: params[:id])
-      # @following = Following.where(followerId: get_current_user.id, followedId: params[:id]).includes(:id, :followerId, :followedId, :created_at)
     end
 
     # Only allow a list of trusted parameters through.

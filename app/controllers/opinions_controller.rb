@@ -5,9 +5,7 @@ class OpinionsController < ApplicationController
 
   def index
     login_required
-    # @opinions = Opinion.all
     @opinion = Opinion.new()
-    # @opinion.authorId = get_current_user.id
     timeline_opinions
   end
 
@@ -94,14 +92,12 @@ class OpinionsController < ApplicationController
 
   private
     def timeline_opinions
-      @timeline_opinions ||= Opinion.all.order(created_at: :desc)
-      # @timeline_opinions ||= Opinion.all.order(created_at: :desc).includes(:id, :authorId, :text, :created_at)
+      @timeline_opinions ||= Opinion.preload(:votes).order(created_at: :desc)
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_opinion
       @opinion = Opinion.find(params[:id])
-      # @opinion = Opinion.find(params[:id]).includes(:id, :authorId, :text, :created_at)
     end
 
     # Only allow a list of trusted parameters through.

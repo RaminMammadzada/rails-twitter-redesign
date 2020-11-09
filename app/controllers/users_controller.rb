@@ -6,12 +6,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     login_required
-    @users = User.all
-    # @users = User.all.includes(:id, :username, :fullname, :photo, :cover_image, created_at)
     if params[:flag] == "followers"
-      @all_spesific_users = @user.followers
+      @all_spesific_users = @user.followers.includes(:opinions)
     elsif params[:flag] == "followed_users"
-      @all_spesific_users = @user.followeds
+      @all_spesific_users = @user.followeds.includes(:opinions)
     end
     @flag = params[:flag]
   end
@@ -82,9 +80,7 @@ class UsersController < ApplicationController
     end
 
   def set_user_opinions
-    # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
-    @timeline_opinions = @user.opinions
-    # @timeline_opinions = @user.opinions.includes(:id, :authorId, :text, :created_at)
+    @timeline_opinions = @user.opinions.includes(:votes).order(created_at: :desc)
     @timeline_opinions
   end
 
