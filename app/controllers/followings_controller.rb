@@ -64,7 +64,8 @@ class FollowingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_following
-      @following = Following.where(followerId: get_current_user.id, followedId: params[:id]).includes(:id, :followerId, :followedId, :created_at)
+      @following = Following.where(followerId: get_current_user.id, followedId: params[:id])
+      # @following = Following.where(followerId: get_current_user.id, followedId: params[:id]).includes(:id, :followerId, :followedId, :created_at)
     end
 
     # Only allow a list of trusted parameters through.

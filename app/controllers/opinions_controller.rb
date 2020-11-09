@@ -11,6 +11,7 @@ class OpinionsController < ApplicationController
     timeline_opinions
   end
 
+
   # GET /opinions/new
   def new
     @opinion = Opinion.new
@@ -99,7 +100,8 @@ class OpinionsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_opinion
-      @opinion = Opinion.find(params[:id]).includes(:id, :authorId, :text, :created_at)
+      @opinion = Opinion.find(params[:id])
+      # @opinion = Opinion.find(params[:id]).includes(:id, :authorId, :text, :created_at)
     end
 
     # Only allow a list of trusted parameters through.
