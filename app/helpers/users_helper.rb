@@ -74,4 +74,29 @@ module UsersHelper
       'Followed users'
     end
   end
+
+  def display_errors(user)
+
+    return unless user.errors.full_messages.any?
+
+    if user.errors.any?
+      concat content_tag :h2, pluralize(user.errors.count, "error") + " prohibited this user from being saved:", class: 'errors'
+
+       content_tag (:ul), class: "input_validations" do
+        user.errors.full_messages.each do |message|
+          concat content_tag (:li) , message, class: "errors"
+        end.reduce(&:+)
+      end
+    end
+  end
+
+  def show_login_button(current_user)
+    if !current_user
+      concat content_tag (:p), "go back to", class: "mr-2"
+      link_to("Log In", login_url, :class => "btn btn-primary text-white")
+    end
+
+
+  end
+
 end
