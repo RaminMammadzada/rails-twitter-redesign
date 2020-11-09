@@ -54,10 +54,14 @@ class FollowingsController < ApplicationController
   # DELETE /followings/1
   # DELETE /followings/1.json
   def destroy
-    @following.destroy_all
     respond_to do |format|
-      format.html { redirect_to opinions_path, notice: 'Following was successfully destroyed.' }
-      format.json { head :no_content }
+      if @following.destroy_all
+        format.html { redirect_to opinions_path, notice: 'Following was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :destroy }
+        format.json { render json: @following.errors, status: :unprocessable_entity }
+      end
     end
   end
 

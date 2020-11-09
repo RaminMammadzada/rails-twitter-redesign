@@ -59,10 +59,14 @@ class OpinionsController < ApplicationController
   # DELETE /opinions/1
   # DELETE /opinions/1.json
   def destroy
-    @opinion.destroy
     respond_to do |format|
-      format.html { redirect_to opinions_url, notice: 'Opinion was successfully destroyed.' }
-      format.json { head :no_content }
+      if @opinion.destroy
+        format.html { redirect_to opinions_url, notice: 'Opinion was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :destroy }
+        format.json { render json: @opinion.errors, status: :unprocessable_entity }
+      end
     end
   end
 
