@@ -56,7 +56,6 @@ I followed a user journey to build the following **MVP version** of the app:
 - [Live demo link with Heroku](https://whispering-headland-84892.herokuapp.com)
 
 ## Video presentation
-
 https://www.loom.com/share/5aa5cb27022f492bb791996455297b5a
 
 ## Built With

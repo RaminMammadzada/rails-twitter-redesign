@@ -16,20 +16,17 @@
  */
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
-/*body {*/
-/*    position: relative;*/
-/*}*/
-
 .all-info {
-    //height: -webkit-calc(100vh);
-    //height: -moz-calc(100vh);
-    //height: calc(100vh);
+  //height: -webkit-calc(100vh);
+  //height: -moz-calc(100vh);
+  //height: calc(100vh);
 }
 
 .login_signup_form_wrapper {
@@ -40,8 +37,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 
 .top_navbar {
-    background: #51a6e7;
-    height: 80px;
+  background: #51a6e7;
+  height: 80px;
 }
 
 .top_border {
@@ -55,11 +52,11 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 
 .left_sidebar {
-    background: #223346;
+  background: #223346;
 }
 
 .content {
-    background: #ffffff;
+  background: #fff;
 }
 
 .left_border {
@@ -75,20 +72,20 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 .write_tweet {
   margin: 0 auto;
-  background: #ffffff;
+  background: #fff;
 }
 
-.fullname-in-right-sidebar{
+.fullname-in-right-sidebar {
   width: 150px;
 }
 
 .hide-icon {
-  opacity:0;
+  opacity: 0;
 }
 
 li {
-  display:inline;
-  font-size:25px;
+  display: inline;
+  font-size: 25px;
 }
 
 .text-black-30 {
@@ -103,12 +100,11 @@ a:hover {
   background: #a2a2a2;
   border-radius: 3%;
   padding: 2px;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
 }
 
 .right-sidebar-user-info {
-
   display: flex;
   justify-content: space-around;
   width: 200px;
