@@ -76,6 +76,17 @@ If you have difficulty to change the version of the prerequested apps, you can c
 - Note 2: You can change your Rails version by following this article [rvm](https://developpaper.com/using-rvm-to-control-switching-ruby-rails-version/).
    
 - Note 3: You can change your Node version by using [nvm](https://github.com/nvm-sh/nvm).
+
+
+- Paperclip
+    - It is intended as an easy file attachment library for ActiveRecord. You can check the installation instructions from its repository [here](https://github.com/thoughtbot/paperclip).
+    - The intent behind it was to keep setup as easy as possible and to treat files as much like other attributes as possible. 
+    This means they aren't saved to their final locations on disk, nor are they deleted if set to nil, 
+    until ActiveRecord::Base#save is called. It manages validations based on size and presence, if required. 
+    It can transform its assigned image into thumbnails if needed, and the prerequisites are as simple as installing 
+    ImageMagick (which, for most modern Unix-based systems, is as easy as installing the right packages). 
+    Attached files are saved to the filesystem and referenced in the browser by an easily understandable specification, 
+    which has sensible and useful defaults.
     
 ### Installation and Setup
 - In order to run, you need to install RUBY and Rails in your computer. For windows you can go to [Ruby installer](https://rubyinstaller.org/) and for MAC and LINUX you can go to [Ruby official site](https://www.ruby-lang.org/en/downloads/) for intructions on how to intall it.
