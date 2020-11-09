@@ -72,7 +72,8 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id]).includes(:id, :authorId, :text, :created_at)
+      @user = User.find(params[:id])
+      # @user = User.includes(:id, :authorId, :text, :created_at).find(params[:id])
       # set_user_opinions(@user)
       # p "DEBUG22:#{@user}"
       # @user
@@ -80,7 +81,8 @@ class UsersController < ApplicationController
 
   def set_user_opinions
     # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
-    @timeline_opinions = @user.opinions.includes(:id, :authorId, :text, :created_at)
+    @timeline_opinions = @user.opinions
+    # @timeline_opinions = @user.opinions.includes(:id, :authorId, :text, :created_at)
     @timeline_opinions
   end
 

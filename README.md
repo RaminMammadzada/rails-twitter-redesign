@@ -41,13 +41,13 @@ I followed a user journey to build the following **MVP version** of the app:
 
 ## Technical mandatory requirements of the project:
 1. The project is a desktop web app.
-2. The database schema should reflect the following structure:
+2. The database schema reflects the following structure:
 
     ![homepace screenshot](./doc/images/erd_diagram.png)
 
-3. It validates all user input to make sure that anyone with bad intentions cannot compromise your app.
-4. It uses Postgres as your database.
-5. It uses ```.erb``` view template engine of your choice.
+3. It validates all user input to make sure that anyone with bad intentions cannot compromise the app.
+4. It uses Postgres as database.
+5. It uses ```.erb``` view template engine.
 6. It is an MVP of the full product (with the full graphical design but only basic features that can be easily extended in the future).
 7. The project is deployed and accessible online.
 
@@ -58,60 +58,41 @@ I followed a user journey to build the following **MVP version** of the app:
 ## Video presentation
 https://www.loom.com/share/5aa5cb27022f492bb791996455297b5a
 
-## Built With
-
-- Ruby v2.7.0p0
-- Ruby on Rails v6.0.3.4
-- Node v13.7.0
-- npm v6.13.6
-
 ## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Install
-In order to run, you need to install RUBY and Rails in your computer. For windows you can go to [Ruby installer](https://rubyinstaller.org/) and for MAC and LINUX you can go to [Ruby official site](https://www.ruby-lang.org/en/downloads/) for intructions on how to intall it.
-
-Then you can clone the project by typing ```https://github.com/jurgen1c/ror-social-scaffold/tree/fb-friendship-v1```
-
-### Dependencies
-You must install the dependendies by bundling the Gemfile:
-   - First fo the root of the project by typing ```cd rails-twitter-redesign```
-   - Go to the ```develop``` branch by typing ```git checkout feature```
-   - ```gem install bundler```
-   - ```bundle update```
-   - ```bundle install``
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby v2.7.0p0
+- Rails v6.0.3.4
+- Node v13.7.0
+- npm v6.13.6
+- Postgres v12.4
 
-### Setup
+If you have difficulty to change the version of the prerequested apps, you can check the notes below.
 
-Instal gems with:
+- Note 1: You can change your Ruby version by using [rvm](https://rvm.io).
+    - Github repository: [rvm github](https://github.com/rvm/rvm)
 
-```
-bundle install
-```
+- Note 2: You can change your Rails version by following this article [rvm](https://developpaper.com/using-rvm-to-control-switching-ruby-rails-version/).
+   
+- Note 3: You can change your Node version by using [nvm](https://github.com/nvm-sh/nvm).
+    
+### Installation and Setup
+- In order to run, you need to install RUBY and Rails in your computer. For windows you can go to [Ruby installer](https://rubyinstaller.org/) and for MAC and LINUX you can go to [Ruby official site](https://www.ruby-lang.org/en/downloads/) for intructions on how to intall it.
 
-Setup database with:
+- To get a local copy up and running, follow these simple example steps.
+   - Clone the project by typing ```https://github.com/RaminMammadzada/rails-twitter-redesign/```
+   - Redirect to the root of the project by typing ```cd rails-twitter-redesign```
+   - Go to the ```test_and_deploy``` branch by typing ```git checkout test_and_deploy```
+   - ```bundle update```
+   - ```bundle install```
+
+- Setup database with:
 
 ```
    rails db:create
    rails db:migrate
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 

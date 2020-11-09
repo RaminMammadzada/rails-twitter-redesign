@@ -94,7 +94,8 @@ class OpinionsController < ApplicationController
 
   private
     def timeline_opinions
-      @timeline_opinions ||= Opinion.all.order(created_at: :desc).includes(:id, :authorId, :text, :created_at)
+      @timeline_opinions ||= Opinion.all.order(created_at: :desc)
+      # @timeline_opinions ||= Opinion.all.order(created_at: :desc).includes(:id, :authorId, :text, :created_at)
     end
 
     # Use callbacks to share common setup or constraints between actions.
