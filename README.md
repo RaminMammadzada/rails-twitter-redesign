@@ -131,7 +131,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-Microverse
+- [UI design of the Twitter Redesign](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details) by Gregoire Vella
+- [Microverse Project Specifications](http://notion.so/Twitter-redesign-f8a8d48453d54d1a949bb0ceab4c8718#33…)
 
 ## 📝 License
 
