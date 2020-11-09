@@ -99,7 +99,13 @@ li {
 a:hover {
   background: #a2a2a2;
   border-radius: 3%;
-  padding: 2px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.left_sidebar_links h2 a:hover {
+  background: #a2a2a2;
+  padding: 0 max(50px);
   color: #fff;
   text-decoration: none;
 }

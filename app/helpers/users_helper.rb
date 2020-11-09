@@ -27,7 +27,6 @@ module UsersHelper
     end
     if Following.all.where(followerId: current_user.id, followedId: user.id).empty?
       icon = content_tag(:i, nil, class: 'fas fa-plus-circle fa-2x')
-      # icon = content_tag(:p, "follow")
 
       capture do
         link_to icon, followings_path(

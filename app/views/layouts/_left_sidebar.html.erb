@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center p-3">
   <%= image_tag current_user.photo.url(:thumb) %>
   <h3 class="mx-3 text-muted"><%= current_user.fullname %></h3>
 </div>
@@ -14,8 +14,8 @@
   </div>
 </div>
 
-<ul class="text-muted d-flex flex-column">
-    <li class="my-2"><%= link_to '<i class="fa fa-user mr-3 text-muted"></i> Profile'.html_safe, user_path(current_user) %></li>
-    <li class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, opinions_path %></li>
-    <li class="mt-5"><%= link_to "Logout", logout_url %></li>
-</ul>
+<div class="d-flex flex-column align-items-center left_sidebar_links">
+  <h2 class="my-2"><%= link_to '<i class="fa fa-user mr-3 text-muted"></i> Profile'.html_safe, user_path(current_user) %></h2>
+  <h2 class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, opinions_path %></h2>
+  <h2 class="mt-5"><%= link_to '<i class="fas fa-sign-out-alt mr-3 text-muted"></i> Logout'.html_safe, logout_url %></h2>
+</div>
