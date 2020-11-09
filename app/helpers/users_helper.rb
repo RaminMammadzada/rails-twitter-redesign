@@ -14,7 +14,7 @@ module UsersHelper
 
   def first_follower(user)
     first_follower = user.followers.first
-    first_follower.nil? ? nil : first_follower.fullname
+    first_follower.nil? ? nil : first_follower
   end
 
   def follow_button(user)
@@ -96,7 +96,16 @@ module UsersHelper
       link_to("Log In", login_url, :class => "btn btn-primary text-white")
     end
 
+  end
 
+  def print_first_follower(user)
+    first_follower_of_user = first_follower(user)
+    if first_follower(user)
+      concat content_tag (:p), "Followed by "
+      link_to( first_follower_of_user.fullname, user_path(first_follower_of_user.id), :class => "text-primary")
+    else
+      return
+    end
   end
 
 end
