@@ -11,11 +11,6 @@ class OpinionsController < ApplicationController
     timeline_opinions
   end
 
-  # GET /opinions/1
-  # GET /opinions/1.json
-  def show
-  end
-
   # GET /opinions/new
   def new
     @opinion = Opinion.new

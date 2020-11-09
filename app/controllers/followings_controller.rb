@@ -18,10 +18,6 @@ class FollowingsController < ApplicationController
     @following = Following.new
   end
 
-  # GET /followings/1/edit
-  def edit
-  end
-
   # POST /followings
   # POST /followings.json
   def create
