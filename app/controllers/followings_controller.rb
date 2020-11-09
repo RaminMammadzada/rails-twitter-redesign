@@ -1,5 +1,5 @@
 class FollowingsController < ApplicationController
-  before_action :set_following, only: [:show, :edit, :update, :destroy]
+  before_action :set_following, only: %i[show edit update destroy]
 
   # GET /followings
   # GET /followings.json
@@ -10,8 +10,7 @@ class FollowingsController < ApplicationController
 
   # GET /followings/1
   # GET /followings/1.json
-  def show
-  end
+  def show; end
 
   # GET /followings/new
   def new
@@ -62,13 +61,14 @@ class FollowingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_following
-      @following = Following.where(followerId: get_current_user.id, followedId: params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def following_params
-      params.require(:following).permit(:followerId, :followedId)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_following
+    @following = Following.where(followerId: current_user.id, followedId: params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def following_params
+    params.require(:following).permit(:followerId, :followedId)
+  end
 end

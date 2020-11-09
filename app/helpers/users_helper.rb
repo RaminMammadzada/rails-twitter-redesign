@@ -1,7 +1,6 @@
 module UsersHelper
   def gel_all_unfollowed_users(user = current_user)
     all_users = User.order(created_at: :desc).all.where.not(id: user.id)
-    followed_users = Following.all.where(followerId: user.id)
     all_users - user.followeds
   end
 
@@ -30,11 +29,11 @@ module UsersHelper
 
       capture do
         link_to icon, followings_path(
-            following: {
-                followerId: current_user.id,
-                followedId: user.id,
-                route: opinions_path
-            }
+          following: {
+            followerId: current_user.id,
+            followedId: user.id,
+            route: opinions_path
+          }
         ),
                 method: 'post',
                 class: 'follow-button',
@@ -45,8 +44,8 @@ module UsersHelper
       icon = content_tag(:i, nil, class: 'fas fa-minus-circle fa-2x')
       capture do
         link_to icon, following_path(
-            id: user.id,
-            route: opinions_path
+          id: user.id,
+          route: opinions_path
         ),
                 method: 'delete',
                 class: 'follow-button',
@@ -56,24 +55,23 @@ module UsersHelper
   end
 
   def settings_button(user)
+    icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x')
     if user.id == current_user.id
-      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x')
-      return capture do
+      capture do
         link_to icon, edit_user_path(user)
       end
     else
-      icon = content_tag(:i, nil, class: 'fas fa-cog fa-2x')
-      return capture do
+      capture do
         icon
       end
     end
   end
 
   def get_title(flag)
-    if flag == "followers"
-      return "Followers"
-    elsif flag == "followed_users"
-      return "Followed users"
+    if flag == 'followers'
+      'Followers'
+    elsif flag == 'followed_users'
+      'Followed users'
     end
   end
 end

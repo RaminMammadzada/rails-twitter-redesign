@@ -1,1 +1,1 @@
-json.array! @opinions, partial: "opinions/opinion", as: :opinion
+json.array! @opinions, partial: 'opinions/opinion', as: :opinion

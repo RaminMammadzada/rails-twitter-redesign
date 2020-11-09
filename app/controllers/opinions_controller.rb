@@ -1,14 +1,13 @@
 class OpinionsController < ApplicationController
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :set_opinion, only: %i[show edit update destroy]
   # GET /opinions
   # GET /opinions.json
 
   def index
     login_required
-    @opinion = Opinion.new()
+    @opinion = Opinion.new
     timeline_opinions
   end
-
 
   # GET /opinions/new
   def new
@@ -16,14 +15,13 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opinions
   # POST /opinions.json
   def create
     @opinion = Opinion.new(opinion_params)
-    @opinion.authorId = get_current_user.id
+    @opinion.authorId = current_user.id
 
     respond_to do |format|
       if @opinion.save
@@ -65,25 +63,24 @@ class OpinionsController < ApplicationController
   end
 
   def update_vote
-    current_opinion_id = params[:opinion]
-    current_voter_id = params[:voter]
     vote_direction = params[:vote_direction]
     route = params[:route]
-    current_opinion = Opinion.find_by(id: current_opinion_id)
-    current_voter = User.find_by(id: current_voter_id)
+    current_opinion = Opinion.find_by(id: params[:opinion])
+    current_voter = User.find_by(id: params[:voter])
 
-    if vote_direction == "up"
-        current_opinion.votes.create(voter_id: current_voter.id, vote_type: "up")
-    elsif vote_direction == "down"
-        current_opinion.votes.create(voter_id: current_voter.id, vote_type: "down")
+    if vote_direction == 'up'
+      current_opinion.votes.create(voter_id: current_voter.id,
+                                   vote_type: 'up')
+    elsif vote_direction == 'down'
+      current_opinion.votes.create(voter_id: current_voter.id,
+                                   vote_type: 'down')
     end
 
-
     respond_to do |format|
-      if route == "opinions"
+      if route == 'opinions'
         format.html { redirect_to opinions_url, notice: 'The vote is updated' }
         format.json { head :no_content }
-      elsif route == "user_profile"
+      elsif route == 'user_profile'
         format.html { redirect_to user_path(current_opinion.user.id), notice: 'The vote is updated' }
         format.json { head :no_content }
       end
@@ -91,18 +88,18 @@ class OpinionsController < ApplicationController
   end
 
   private
-    def timeline_opinions
-      @timeline_opinions ||= Opinion.preload(:votes).order(created_at: :desc)
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
+  def timeline_opinions
+    @timeline_opinions ||= Opinion.preload(:votes).order(created_at: :desc)
+  end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:authorId, :text)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
 
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:authorId, :text)
+  end
 end

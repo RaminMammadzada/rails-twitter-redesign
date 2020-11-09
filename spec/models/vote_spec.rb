@@ -10,12 +10,12 @@ RSpec.describe Vote, type: :model do
     it 'should be valid, because all fields of vote are valid' do
       expect(test_vote).to be_valid
     end
-    it "should be valid, because the vote type is valid" do
-      test_vote.vote_type = "down"
-      expect(test_vote).to  be_valid
+    it 'should be valid, because the vote type is valid' do
+      test_vote.vote_type = 'down'
+      expect(test_vote).to be_valid
     end
-    it "should be invalid, because the vote type is invalid" do
-      test_vote.voter_id = "invalid_example_vote_type"
+    it 'should be invalid, because the vote type is invalid' do
+      test_vote.voter_id = 'invalid_example_vote_type'
       expect(test_vote).to be_invalid
     end
   end
