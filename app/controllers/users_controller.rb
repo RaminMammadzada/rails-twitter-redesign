@@ -1,24 +1,22 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_user_opinions, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[index show edit update destroy]
+  before_action :set_user_opinions, only: %i[show edit update destroy]
 
   # GET /users
   # GET /users.json
   def index
     login_required
-    @users = User.all
-    if params[:flag] == "followers"
-      @all_spesific_users = get_current_user.followers
-    elsif params[:flag] == "followed_users"
-      @all_spesific_users = get_current_user.followeds
+    if params[:flag] == 'followers'
+      @all_spesific_users = @user.followers.includes(:opinions)
+    elsif params[:flag] == 'followed_users'
+      @all_spesific_users = @user.followeds.includes(:opinions)
     end
     @flag = params[:flag]
   end
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -26,8 +24,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
@@ -36,7 +33,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to login_path notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to user_path(@user.id), notice: 'User was successfully created and logged in!' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -62,35 +60,31 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      if @user.destroy
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :destroy }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-      # set_user_opinions(@user)
-      # p "DEBUG22:#{@user}"
-      # @user
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def set_user_opinions
-    # @user_opinions ||= Opinion.all.order(created_at: :desc).includes(:user)
-    @timeline_opinions = @user.opinions
-    p "DEBUG2:#{@timeline_opinions}"
-    @timeline_opinions.each do |opinion|
-      p "D:#{opinion.text}"
-    end
+    @timeline_opinions = @user.opinions.includes(:votes).order(created_at: :desc)
     @timeline_opinions
   end
 
-
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:username, :fullname, :photo, :cover_image)
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:username, :fullname, :photo, :cover_image)
+  end
 end

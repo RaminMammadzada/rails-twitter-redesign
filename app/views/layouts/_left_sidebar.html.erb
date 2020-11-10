@@ -1,32 +1,21 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center p-3">
   <%= image_tag current_user.photo.url(:thumb) %>
   <h3 class="mx-3 text-muted"><%= current_user.fullname %></h3>
 </div>
 
 <div class="d-flex my-3 justify-content-center align-items-center ">
   <div class="d-flex flex-column justify-content-center align-items-center pl-1 pr-4 ">
-    <h1 ><%= link_to current_user.followeds.size, users_path( flag: "followed_users"), :class => "text-white"%> </h1>
+    <h1 ><%= link_to current_user.followeds.size, users_path(id: current_user.id, flag: "followed_users"), :class => "text-white"%> </h1>
     <p class="text-muted">followed</p>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center pl-4 pr-1 ">
-    <h1 ><%= link_to current_user.followers.size, users_path( flag: "followers"), :class => "text-white"%> </h1>
+    <h1 ><%= link_to current_user.followers.size, users_path(id: current_user.id, flag: "followers"), :class => "text-white"%> </h1>
     <p class="text-muted">followers</p>
   </div>
 </div>
 
-<ul class="text-muted d-flex flex-column">
-    <li class="my-2"><%= link_to '<i class="fa fa-user mr-3 text-muted"></i> Profile'.html_safe, user_path(current_user) %></li>
-    <li class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, user_path(current_user) %></li>
-    <li class="mt-5"><%= link_to "Logout", logout_url %></li>
-</ul>
-
-<!--<div class="d-flex justify-content-end">-->
-
-  <%# if current_user.nil? %>
-<!--    <h3 class="mx-3"><%#= link_to "Login", login_url %></h3>-->
-<!--    <h3 class="mx-3"><%#= link_to "Signup", signup_url %></h3>-->
-  <%# else %>
-<!--    <h3 class="mx-3"><%#= current_user.username %></h3>-->
-<!--    <h3 class="mx-3"><%#= link_to "Logout", logout_url %></h3>-->
-  <%# end %>
-<!--</div>-->
+<div class="d-flex flex-column align-items-center left_sidebar_links">
+  <h2 class="my-2"><%= link_to '<i class="fa fa-user mr-3 text-muted"></i> Profile'.html_safe, user_path(current_user) %></h2>
+  <h2 class="my-2"><%= link_to '<i class="fa fa-home mr-3 text-muted"></i> Home'.html_safe, opinions_path %></h2>
+  <h2 class="mt-5"><%= link_to '<i class="fas fa-sign-out-alt mr-3 text-muted"></i> Logout'.html_safe, logout_url %></h2>
+</div>

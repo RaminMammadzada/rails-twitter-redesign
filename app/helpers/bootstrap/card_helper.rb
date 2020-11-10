@@ -1,7 +1,7 @@
 module Bootstrap::CardHelper
-  def card(options={})
+  def card(options = {})
     options = canonicalize_options(options)
-    options = ensure_class(options, %w(card))
+    options = ensure_class(options, %w[card])
     content_tag(:div, options) do
       content_tag(:div, class: 'card-block') do
         yield

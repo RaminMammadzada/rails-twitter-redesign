@@ -5,40 +5,42 @@ class FollowingsControllerTest < ActionDispatch::IntegrationTest
     @following = followings(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get followings_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_following_url
     assert_response :success
   end
 
-  test "should create following" do
+  test 'should create following' do
     assert_difference('Following.count') do
-      post followings_url, params: { following: { followedId: @following.followedId, followerId: @following.followerId } }
+      post followings_url, params: { following: { followedId: @following.followedId,
+                                                  followerId: @following.followerId } }
     end
 
     assert_redirected_to following_url(Following.last)
   end
 
-  test "should show following" do
+  test 'should show following' do
     get following_url(@following)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_following_url(@following)
     assert_response :success
   end
 
-  test "should update following" do
-    patch following_url(@following), params: { following: { followedId: @following.followedId, followerId: @following.followerId } }
+  test 'should update following' do
+    patch following_url(@following), params: { following: { followedId: @following.followedId,
+                                                            followerId: @following.followerId } }
     assert_redirected_to following_url(@following)
   end
 
-  test "should destroy following" do
+  test 'should destroy following' do
     assert_difference('Following.count', -1) do
       delete following_url(@following)
     end

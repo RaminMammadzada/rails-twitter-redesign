@@ -1,17 +1,7 @@
 <% @timeline_opinions.each do |opinion| %>
   <div class="container bg-white my-2 d-flex flex-row ">
-    <div class="vote_container flex-shrink-1 d-flex flex-column">
-      <% route = @user.nil? ? "opinions" : "user_profile" %>
-      <% if current_user.id != opinion.user.id %>
-        <h4 ><%= link_to '<i class="fas fa-arrow-up a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "up", route: route } ), :class => "text-dark"%> </h4>
-        <h4 class="text-dark"><%= opinion.votes.count %></h4>
-        <h4 ><%= link_to '<i class="fas fa-arrow-down a-2x"></i>'.html_safe, vote_path({opinion: opinion, voter: current_user, vote_direction: "down", route: route }), :class => "text-dark"%> </h4>
-      <% else %>
-        <h4 ><i class="fas fa-arrow-up a-2x text-black-30"></i></h4>
-        <h4 class="text-dark"><%= opinion.votes.count %></h4>
-        <h4 ><i class="fas fa-arrow-down a-2x text-black-30"></i></h4>
-      <% end %>
-    </div>
+
+    <%= show_vote_buttons(opinion, @user) %>
     <div class="d-flex flex-row align-items-center w-100">
       <div class="mr-3 flex-shrink-1">
         <%= image_tag opinion.user.photo.url(:thumb) %>
@@ -23,12 +13,7 @@
         </div>
         <div class="d-flex flex-column">
           <p><%= opinion.text %></p>
-          <% if current_user.id == opinion.user.id %>
-            <div class="d-flex justify-content-end flex-row">
-              <p class="mr-2"><%= link_to 'Edit', edit_opinion_path(opinion) %></p>
-              <p><%= link_to 'Destroy', opinion, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            </div>
-          <% end %>
+          <%= show_edit_destroy_opinion_buttons(opinion) %>
         </div>
       </div>
     </div>

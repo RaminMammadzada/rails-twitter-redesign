@@ -12,7 +12,7 @@ module Bootstrap::CommonHelper
   # @raise [ArgumentError] if _hash_ is not a Hash
   # @return [Hash]
   def canonicalize_options(hash)
-    raise ArgumentError.new("expected a Hash, got #{hash.inspect}") unless hash.is_a?(Hash)
+    raise ArgumentError, "expected a Hash, got #{hash.inspect}" unless hash.is_a?(Hash)
 
     hash.symbolize_keys.tap do |h|
       h[:class] = arrayify_and_stringify_elements(h[:class])
@@ -30,9 +30,8 @@ module Bootstrap::CommonHelper
   def arrayify_and_stringify_elements(arg)
     return false if arg == false
 
-    case
-    when arg.blank? then []
-    when arg.is_a?(Array) then arg
+    if arg.blank? then []
+    elsif arg.is_a?(Array) then arg
     else arg.to_s.strip.split(/\s/)
     end.map(&:to_s)
   end
@@ -42,8 +41,8 @@ module Bootstrap::CommonHelper
   # @example
   # caret(id: 'my-id') #=>
   # @return [String]
-  def caret(options={})
-    options= canonicalize_options(options)
+  def caret(options = {})
+    options = canonicalize_options(options)
     options = ensure_class(options, 'caret')
     content_tag(:span, nil, options)
   end

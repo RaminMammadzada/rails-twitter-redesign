@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_175512) do
+ActiveRecord::Schema.define(version: 2020_11_06_144936) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "followings", force: :cascade do |t|
     t.integer "followerId"
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_11_05_175512) do
     t.integer "current_opinion_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "vote_type"
   end
 
 end

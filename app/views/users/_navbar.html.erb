@@ -1,0 +1,11 @@
+<div class="bottom_border">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#"><%= link_to 'TWEETS', user_path(id: user.id) %> <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#"><%= link_to 'FOLLOWINGS', users_path( id: user.id, flag: "followed_users") %> <span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" href="#"><%= link_to 'FOLLOWERS', users_path( id: user.id, flag: "followers") %> <span class="sr-only"></span></a>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,1 +1,1 @@
-json.partial! "followings/following", following: @following
+json.partial! 'followings/following', following: @following

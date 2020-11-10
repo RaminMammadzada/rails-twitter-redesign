@@ -1,1 +1,1 @@
-json.partial! "opinions/opinion", opinion: @opinion
+json.partial! 'opinions/opinion', opinion: @opinion
