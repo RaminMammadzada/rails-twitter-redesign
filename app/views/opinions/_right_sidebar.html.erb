@@ -15,11 +15,7 @@
             <div class="">
               <h5><%= link_to user.fullname, user_path(user.id), :class => ""%> </h5>
             </div>
-            <div class="d-flex flex-row">
-
-              <%= print_first_follower(user) %>
-
-            </div>
+            <%= print_first_follower(user) %>
           </div>
           <div>
             <%= follow_button(user) %>

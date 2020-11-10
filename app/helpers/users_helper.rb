@@ -76,36 +76,40 @@ module UsersHelper
   end
 
   def display_errors(user)
-
     return unless user.errors.full_messages.any?
 
-    if user.errors.any?
-      concat content_tag :h2, pluralize(user.errors.count, "error") + " prohibited this user from being saved:", class: 'errors'
+    content_tag :div, nil, class: 'd-flex flex-row' do
+      if user.errors.any?
+        concat content_tag :h2,
+                           pluralize(user.errors.count, 'error') + ' prohibited this user from being saved:',
+                           class: 'errors'
 
-       content_tag (:ul), class: "input_validations" do
-        user.errors.full_messages.each do |message|
-          concat content_tag (:li) , message, class: "errors"
-        end.reduce(&:+)
+        content_tag (:ul), class: 'input_validations' do
+          user.errors.full_messages.each do |message|
+            concat content_tag :li, message, class: 'errors'
+          end.reduce(&:+)
+        end
       end
     end
   end
 
   def show_login_button(current_user)
-    if !current_user
-      concat content_tag (:p), "go back to", class: "mr-2"
-      link_to("Log In", login_url, :class => "btn btn-primary text-white")
+    content_tag :div, nil, class: 'd-flex flex-row' do
+      unless current_user
+        concat(content_tag(:p, 'go back to', class: 'mr-2'))
+        concat(link_to('Log In', login_url, class: 'btn btn-primary text-white'))
+      end
     end
-
   end
 
   def print_first_follower(user)
     first_follower_of_user = first_follower(user)
-    if first_follower(user)
-      concat content_tag (:p), "Followed by "
-      link_to( first_follower_of_user.fullname, user_path(first_follower_of_user.id), :class => "text-primary")
-    else
-      return
+
+    content_tag :div, nil, class: 'd-flex flex-row' do
+      if first_follower(user)
+        concat(content_tag(:p, 'Followed by '))
+        concat(link_to(first_follower_of_user.fullname, user_path(first_follower_of_user.id), class: 'text-primary'))
+      end
     end
   end
-
 end
